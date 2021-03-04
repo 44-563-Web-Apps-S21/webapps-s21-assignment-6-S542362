@@ -1,46 +1,68 @@
 <!DOCTYPE html>
 <html>
- <head>
 
-     <title>
-        Permute
+<head>
+
+    <title>
+        Permute And calculate
     </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
 <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <h2>Shabnam Computes</h2>
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="form1_firstelement" class="label">Enter a number </label>
+                            <input type="number" class="form-control" id="form1_firstelement" name="form1_firstelement"
+                                value=10>
+                        </div>
+                        <div class="form-group">
+                            <label for="form1_secondelement" class="label">Enter a number </label>
+                            <input type="number" class="form-control" id="form1_secondelement"
+                                name="form1_secondelement" value=2>
+                        </div>
+                        <div class="form-group">
+                            <input type="button" class="btn btn-primary btn-md button1" onclick="permutations()"
+                                value="Compute">
+                        </div>
+                    </form>
+                    <p id="result" class="text-warning">First permute Second is product </p>
+                    <form>
+                        <input type="radio" id="rg1_plus" name="operation" onclick="processRadio()" value="plus"> <label
+                            for="rg1_plus">+</label>
+                        </br>
+                        <input type="radio" id="rg1_minus" name="operation" onclick="processRadio()" value="minus">
+                        <label for="rg1_minus">-</label>
+                        </br>
+                        <input type="radio" id="rg1_times" name="operation" onclick="processRadio()" value="times">
+                        <label for="rg1_times">*</label>
+                        </br>
+                        <input type="radio" id="rg1_divide" name="operation" onclick="processRadio()" value="divide">
+                        <label for="rg1_divide">/</label>
+                        </br>
 
-<h2>Shabnam Computers</h2>
+                    </form>
+                    <p id="arithmetic" class="text-info">The text will be displayed on the screen by checking result
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<form>
-    <label for="form1_firstelement">Enter a number </label>
-    <input type ="number" id="form1_firstelement" name="form1_firstelement" value=10> <br>
+    <script>
+        function permutations(){
 
-    <label for="form1_secondelement">Enter a number </label>
-    <input type ="number" id="form1_secondelement" name="form1_secondelement" value=2 > <br>
-
-    <input type="button" onclick="permutations()" value="Compute">
-</form>
-
-<p id="result">First permute Second is product  </p>
-<form>
-<input type="radio" id="rg1_plus" name="operation"  onclick="processRadio()" value="plus"> <label for="rg1_plus">+</label>
-</br>    
-<input type="radio" id="rg1_minus" name="operation" onclick="processRadio()" value="minus"> <label for="rg1_minus">-</label>
-</br>
-<input type="radio" id="rg1_times" name="operation" onclick="processRadio()" value="times"> <label for="rg1_times">*</label>
-</br>
-<input type="radio" id="rg1_divide" name="operation" onclick="processRadio()" value="divide"> <label for="rg1_divide">/</label>
-</br>    
-
-</form>
-
-
-
-<p id="arithmetic">The text will be displayed on the screen by checking result </p>
-
-<script> 
-
-function permutations(){
-    var a1 = document.getElementById("form1_firstelement").value;
+        var a1 = document.getElementById("form1_firstelement").value;
         var shaik = document.getElementById("form1_secondelement").value;
         var product = 1;
         var d = a1;
@@ -55,35 +77,38 @@ function permutations(){
         product = a1 / abc;
         console.log(product);
         out.innerHTML = d + " permute " + shaik + " should be " + product;
-    
-}
-</script>
-
-
-<script>
-    function processRadio() {
-        let first = document.getElementById("form1_firstelement").value;
-        let second = document.getElementById("form1_secondelement").value;
-        plus = document.getElementById("rg1_plus").checked
-        minus = document.getElementById("rg1_minus").checked
-        times = document.getElementById("rg1_times").checked
-        divide = document.getElementById("rg1_divide").checked
-       
-        if (plus) {
-            document.getElementById("arithmetic").innerHTML = (Number)(first) + (Number)(second)
-        }
-        if (minus) {
-            document.getElementById("arithmetic").innerHTML = first - second
-        }
-        if (times) {
-            document.getElementById("arithmetic").innerHTML = first * second
-        }
-        if (divide) {
-            document.getElementById("arithmetic").innerHTML = first / second
-        }
     }
-</script>
+    
 
+        function processRadio() {
+            let first = document.getElementById("form1_firstelement").value;
+            let second = document.getElementById("form1_secondelement").value;
+            plus = document.getElementById("rg1_plus").checked
+            minus = document.getElementById("rg1_minus").checked
+            times = document.getElementById("rg1_times").checked
+            divide = document.getElementById("rg1_divide").checked
 
+            if (plus) {
+                result=0;
+                result = (Number) (first) +(Number) (second);
+                document.getElementById("arithmetic").innerHTML = "Sum of " + first + " and " + second + " is " +result;
+            }
+            if (minus) {
+                result = first - second
+                text = "Difference of " + first + " and " + second + " is " + result
+                document.getElementById("arithmetic").innerHTML = "Difference of " + first + " and " + second + " is " +
+                    text;
+            }
+            if (times) {
+                document.getElementById("arithmetic").innerHTML = "Product of " + first + " and " + second + " is " +
+                    first * second;
+            }
+            if (divide) {
+                document.getElementById("arithmetic").innerHTML = "Division of " + first + " and " + second + " is " +
+                    first / second;
+            }
+        }
+    </script>
 </body>
-</html> 
+
+</html>
